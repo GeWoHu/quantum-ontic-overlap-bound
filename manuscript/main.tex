@@ -1,0 +1,203 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{convention}{Convention}
+\newtheorem{remark}{Remark}
+\newcommand{\dd}{\delta}
+\title{\bf Stochastic rigidity of two-ontic-state models of the PBR exclusion scenario, with a sharp overlap--disturbance inequality}
+\author{Preprint v1.0 --- for expert review}
+\date{November 7, 2026}
+\begin{document}
+\maketitle
+\begin{center}\fbox{\textbf{PREPRINT FOR EXPERT REVIEW --- NOT PEER REVIEWED}}\end{center}
+
+\begin{abstract}
+We study stochastic (response-averaged) ontological models with exactly two ontic states reproducing the exclusion structure of the two-preparation Puseck--Barrett--Rudolph (PBR) scenario: four product preparations, a four-outcome exclusion measurement with Born table $B$ having zero diagonal and off-diagonal entries $\{\tfrac14,\tfrac14,\tfrac12\}$ per row, and marginal consistency. Let $\omega$ denote the overlap of the two single-system marginals $\mu_1,\mu_2$, and let $\dd_x$ be the total-variation distance between the joint ontic measure of preparation pair $x$ and the independent product $\mu_i\otimes\mu_j$. We prove the sharp inequality
+\[
+\omega^2 \;\le\; \tfrac12\sum_x \dd_x ,
+\]
+and, more strongly, a rigidity theorem: the admissible class consists of exactly four models --- two deterministic models at $(p,q)=(\tfrac14,\tfrac34)$ and its swap, where equality is attained nontrivially, and two degenerate-marginal corner models where both sides vanish. No genuinely stochastic model with nondegenerate marginals survives. The classification is obtained by an exact reduction to Fr\'echet-endpoint strata followed by exhaustive symbolic elimination; every excluded stratum carries a machine-checkable Gr\"obner certificate ($1$ in the ideal, over $\mathbb{Q}$) reproducible from the published generator lists without trusting this paper's computation.
+\end{abstract}
+
+\section{Introduction and statement of results}
+$\psi$-epistemic models explain quantum state statistics by probability distributions (epistemic states) over an ontic space $\Lambda$, with measurement statistics obtained by averaging response functions over those distributions \cite{harriganspekkens}. The PBR theorem \cite{pbr} forces, under preparation independence, any model reproducing the statistics of certain state sets to be $\psi$-ontic; quantitative extensions bound overlaps and response probabilities \cite{branciard}, noncontextuality inequalities remove the determinism assumption \cite{ks2}, symmetry-based no-go theorems and explicit model constructions delimit the $\psi$-epistemic territory \cite{aaronson}, weakened notions of preparation independence admit classical correlations \cite{mansfield}, and the contextual fraction quantifies contextuality in general empirical models \cite{abramsky}. The present paper fixes $|\Lambda|=2$ and the two-copy BB84 exclusion structure, but drops the product-measure assumption itself: the joint ontic measures $\pi_x$ of preparation pairs are arbitrary couplings of the given marginals, and the theorem quantifies how far from independence they must be.
+
+Write the two single-system marginals as $\mu_1=(p,1-p)$, $\mu_2=(q,1-q)$, $p,q\in[0,1]$. The overlap is $\omega=\sum_{\lambda}\min(\mu_1(\lambda),\mu_2(\lambda)) = \min(p,q)+\min(1-p,1-q)$, and for each of the four preparations $x$ the disturbance-from-independence is $\dd_x=\tfrac12\|\pi_x-\mu_i\otimes\mu_j\|_1$.
+
+\begin{theorem}[Sharp overlap--disturbance inequality]
+\label{thm:main}
+Every stochastic ontological model with $|\Lambda|=2$ that is FULL-BORN-compatible with the exclusion table $B$ \eqref{eq:B} satisfies
+$\omega^2 \le \tfrac12\sum_x \dd_x$,
+with equality if and only if $(p,q)\in\{(\tfrac14,\tfrac34),(\tfrac34,\tfrac14),(0,1),(1,0)\}$.
+\end{theorem}
+
+\begin{theorem}[Rigidity of the admissible class]
+\label{thm:rigid}
+The FULL-BORN-compatible stochastic $|\Lambda|=2$ class consists of exactly four models: two deterministic models at $(p,q)=(\tfrac14,\tfrac34)$ and $(\tfrac34,\tfrac14)$ (explicit in Appendix~B), and two degenerate-marginal models at $(0,1)$ and $(1,0)$ in which all couplings collapse to independent products ($\dd_x=0$) and $\omega=0$. In particular every model with $p,q\in(0,1)$ is deterministic.
+\end{theorem}
+
+Theorem \ref{thm:main} follows from Theorem \ref{thm:rigid} by direct evaluation; the substance is the classification. Two remarks fix the scope. First, the factor $\tfrac12$ is attained (not slack): the deterministic models have $\omega^2=\tfrac14=\tfrac12\sum_x\dd_x$ exactly. Second, the theorem is a $k=2$ statement: for larger ontic spaces the admissible class is known to be nonempty and non-rigid in this sense (the PBR construction with arbitrarily large $\Lambda$ evades product-measure conclusions only by paying elsewhere), and no analogue of Theorem \ref{thm:rigid} is claimed here for $|\Lambda|>2$; see Section~\ref{sec:limits}.
+
+\section{Model class, conventions, and the Born table}
+\label{sec:setup}
+The ontic space of a single system is $\Lambda=\{0,1\}$; a preparation pair samples $\Lambda^2$, whose cells we index
+\[
+00\mapsto 0,\qquad 01\mapsto 1,\qquad 10\mapsto 2,\qquad 11\mapsto 3 .
+\]
+\begin{convention}[frozen preparation ordering]
+\label{conv}
+The four preparations are, in this fixed order,
+$x_1=(\mu_1,\mu_2)$, $x_2=(\mu_1,\mu_1)$, $x_3=(\mu_2,\mu_2)$, $x_4=(\mu_2,\mu_1)$.
+Outcome labels $o\in\{1,\dots,4\}$ share indices with the rows of $B$; preparation $x_o$ is the one excluded by outcome $o$.
+\end{convention}
+A model consists of: marginals $\mu_1=(p,1-p)$, $\mu_2=(q,1-q)$; for each preparation $x$, a coupling $\pi_x$ on $\Lambda^2$ with marginals $(\mu_i,\mu_j)$ of the pair; and response functions $\xi_o(\lambda)\in[0,1]$ on $\Lambda^2$ with $\sum_o \xi_o(\lambda)=1$ for every cell $\lambda$. The compatibility requirement is the full Born rule at all 16 entries:
+\begin{equation}
+\label{eq:B}
+B[o][x]\;=\;\sum_{\lambda\in\Lambda^2}\xi_o(\lambda)\,\pi_x(\lambda),
+\qquad
+B=\begin{pmatrix}
+0&\tfrac14&\tfrac14&\tfrac12\\
+\tfrac14&0&\tfrac12&\tfrac14\\
+\tfrac14&\tfrac12&0&\tfrac14\\
+\tfrac12&\tfrac14&\tfrac14&0
+\end{pmatrix},
+\end{equation}
+which is the two-copy BB84 exclusion table: outcome $o$ never fires on preparation $x_o$ (zero diagonal), and rows and columns sum to $1$. All statements are label-covariant under the swap $\mu_1\leftrightarrow\mu_2$, which leaves $B$ invariant.
+
+\begin{definition}
+$\omega=\min(p,q)+\min(1-p,1-q)$, and $\dd_x=\tfrac12\|\pi_x-\mu_i\otimes\mu_j\|_1$ (total variation).
+\end{definition}
+
+\section{Reduction to Fr\'echet endpoints}
+Write $\mathrm{prod}_x=\mu_i\otimes\mu_j$ and let $\mathrm{prod}_k$ denote its $k$-th entry.
+
+\begin{lemma}[Coupling parametrization]
+\label{lem:reduce}
+Every coupling $\pi$ of $(\mu_i,\mu_j)$ on $2\times2$ has a unique form $\pi=\mathrm{prod}+t\,J$ with $J=\left(\begin{smallmatrix}1&-1\\-1&1\end{smallmatrix}\right)$ and $t$ in the Fr\'echet interval
+$t\in[\max(-\mathrm{prod}_0,-\mathrm{prod}_3),\,\min(\mathrm{prod}_1,\mathrm{prod}_2)]$; moreover $\dd=\tfrac12\|tJ\|_1=2|t|$.
+\end{lemma}
+\begin{proof}
+The marginal constraints are four linear equations in four unknowns of rank $3$; the kernel is spanned by $J$. Nonnegativity of the four entries $\mathrm{prod}_k\pm t$ gives exactly the stated interval. $\tfrac12\|tJ\|_1=\tfrac12(4|t|)=2|t|$.
+\end{proof}
+
+\begin{lemma}[Endpoint Lemma]
+\label{lem:endpoint}
+In every FULL-BORN-compatible model, each $t_x$ sits at an endpoint of its Fr\'echet interval: the stochastic interior is infeasible. Concretely, every $\pi_x$ has a zero cell, and each zero cell forces $t_x$ to the corresponding endpoint:
+$\pi_0=0\Rightarrow t_x=-\mathrm{prod}_0$ (lower), $\pi_3=0\Rightarrow t_x=-\mathrm{prod}_3$ (lower), $\pi_1=0\Rightarrow t_x=+\mathrm{prod}_1$ (upper), $\pi_2=0\Rightarrow t_x=+\mathrm{prod}_2$ (upper).
+\end{lemma}
+\begin{proof}
+Fix outcome $x$. Row $x$ of $B$ is positive at the three preparations $x'\ne x$. If $\xi_x\equiv 0$, Born at any such $x'$ reads $0=B[x][x']>0$, contradiction. So $\xi_x(\lambda_0)>0$ at some cell $\lambda_0$. The diagonal Born entry is $0=B[x][x]=\sum_\lambda \xi_x(\lambda)\pi_x(\lambda)$ with all terms nonnegative, hence $\xi_x(\lambda)\pi_x(\lambda)=0$ elementwise, and in particular $\pi_x(\lambda_0)=0$. Writing the entries $\pi_k=\mathrm{prod}_k\pm t$ ($+$ at $k\in\{0,3\}$, $-$ at $k\in\{1,2\}$), each possible zero is a linear equation in $t$:
+if $\pi_0=0$ then $t=-\mathrm{prod}_0$, and feasibility $\pi_3=\mathrm{prod}_3-\mathrm{prod}_0\ge0$ makes $-\mathrm{prod}_0$ the lower endpoint $\max(-\mathrm{prod}_0,-\mathrm{prod}_3)$; the case $\pi_3=0$ is symmetric. If $\pi_1=0$ then $t=+\mathrm{prod}_1$, and feasibility $\pi_2=\mathrm{prod}_2-\mathrm{prod}_1\ge0$ makes $+\mathrm{prod}_1$ the upper endpoint $\min(\mathrm{prod}_1,\mathrm{prod}_2)$; the case $\pi_2=0$ is symmetric. Thus any zero --- single or double --- places $t_x$ at an endpoint.
+\end{proof}
+
+\begin{lemma}[Coverage]
+\label{lem:coverage}
+For every cell $\lambda\in\Lambda^2$ there is a preparation $x$ with $\pi_x(\lambda)=0$; equivalently the four zero-sets $Z_x=\{\lambda:\pi_x(\lambda)=0\}$ cover $\Lambda^2$.
+\end{lemma}
+\begin{proof}
+$\sum_o\xi_o(\lambda)=1$ gives an outcome $o$ with $\xi_o(\lambda)>0$; elementwise complementarity (proof of Lemma \ref{lem:endpoint}) forces $\pi_o(\lambda)=0$.
+\end{proof}
+
+\begin{proposition}[Double-zero locus]
+\label{prop:double}
+$Z_x$ has size $2$ iff $\mathrm{prod}_0=\mathrm{prod}_3$ (lower double zero) or $\mathrm{prod}_1=\mathrm{prod}_2$ (upper double zero) for $\mathrm{prod}_x$. For the diagonal preparations $(\mu_1,\mu_1)$, $(\mu_2,\mu_2)$ the identity $\mathrm{prod}_1=\mathrm{prod}_2$ holds identically, so their upper endpoint is always a double zero. Off-diagonal preparations double exactly on the lines $p=q$ or $p+q=1$; degenerate marginals $p,q\in\{0,1\}$ collapse Fr\'echet intervals to a point.
+\end{proposition}
+\begin{proof}
+$\pi_1=\pi_2=0$ iff $t=\mathrm{prod}_1=\mathrm{prod}_2$; $\pi_0=\pi_3=0$ iff $-\mathrm{prod}_0=-\mathrm{prod}_3$. For $(\mu_1,\mu_1)$: $\mathrm{prod}_1=\mathrm{prod}_2=p(1-p)$ identically. For $(\mu_1,\mu_2)$: $\mathrm{prod}_0=\mathrm{prod}_3\iff p q=(1-p)(1-q)\iff p+q=1$, and $\mathrm{prod}_1=\mathrm{prod}_2\iff p(1-q)=q(1-p)\iff p=q$.
+\end{proof}
+
+Lemma \ref{lem:endpoint} collapses the search onto \emph{endpoint strata}: a choice, for each $x$, of one of four endpoint candidates, after which every $t_x$ is a fixed rational function of $(p,q)$ and the Born system is polynomial (linear in $\xi$) with support confined to $Z_x$.
+
+\section{Case A: singleton zero-sets --- exhaustive classification}
+\label{sec:caseA}
+Suppose first that all four zero-sets are singletons. Coverage then makes $x\mapsto c_x$ (the unique zero cell of $Z_x$) a permutation $\sigma$ of $\{0,1,2,3\}$.
+
+\begin{proposition}
+\label{prop:caseA}
+In Case A every response is deterministic, $\xi_o(c_{\sigma^{-1}(o)})=1$ in the relabeling $\sigma(o)=c_{\sigma^{-1}(o)}$, and the Born system forces $\pi_x(\sigma(o))=B[o][x]$ for all $o,x$. Imposing $\pi_x=\mathrm{prod}_x+t_xJ$ yields, for each preparation, the three linear equations
+\[
+d_0+d_1=0,\qquad d_0+d_2=0,\qquad d_0-d_3=0,\qquad d_k:=\pi_x(\text{$k$-th entry})-\mathrm{prod}_k ,
+\]
+in $(p,q)$; solving all $24$ permutations exactly gives exactly two feasible models:
+$\sigma=(1,0,3,2)$ at $(p,q)=(\tfrac14,\tfrac34)$ and $\sigma=(2,3,0,1)$ at $(\tfrac34,\tfrac14)$, both with $\omega^2/\sum_x\dd_x=\tfrac12$ exactly.
+\end{proposition}
+\begin{proof}
+Fix a cell $\lambda$ and let $x$ be the preparation with $c_x=\lambda$; then $\pi_x(\lambda)=0$ while $\pi_{x'}(\lambda)>0$ for $x'\ne x$ (singletons, and the zero of each $\pi_{x'}$ is at a different cell). Complementarity gives $\xi_{x'}(\lambda)\pi_{x'}(\lambda)=0$, hence $\xi_{x'}(\lambda)=0$ for all $x'\ne x$; simplex forces $\xi_x(\lambda)=1$. So responses are deterministic: outcome $x$ fires exactly on cell $c_x$, i.e.\ $\xi_o(\lambda)=1$ iff $c_{\sigma^{-1}(o)}$... writing $\lambda=\sigma(o)$, $\xi_o(\sigma(o))=1$ and $\xi_{o'}(\sigma(o))=0$ for $o'\ne o$. Then $B[o][x]=\sum_\lambda\xi_o(\lambda)\pi_x(\lambda)=\pi_x(\sigma(o))$. Now fix $x$ and set $d_k=\pi_x(k)-\mathrm{prod}_k$; the coupling form of Lemma \ref{lem:reduce} is equivalent to $d=t(1,-1,-1,1)$, i.e.\ the three displayed linear relations. Substituting $\pi_x(\sigma(o))=B[o][x]$ and $\mathrm{prod}_x=\mu_i\otimes\mu_j$ gives three polynomial equations in $(p,q)$ per preparation; the union over the four preparations is solved exactly for each of the $24$ permutations (quadratic elimination; the reduced lexicographic Gr\"obner basis either contains a nonzero constant --- no solution --- or is solved exactly). Feasibility (nonnegativity of all entries and endpoint consistency) then leaves exactly the two listed models; the complete per-permutation table is Appendix~B, and both models are exhibited explicitly there with all $16$ Born entries verified.
+\end{proof}
+
+\section{Cases B/C: double zeros --- stratification and exact elimination}
+\label{sec:BC}
+By Proposition \ref{prop:double}, models with some $|Z_x|\ge 2$ live on the coincidence loci: the diagonal preparations carry the identity $\mathrm{prod}_1=\mathrm{prod}_2$ (upper double zeros everywhere), off-diagonal preparations double on the lines $p=q$ and $p+q=1$, and the degenerate edges $p,q\in\{0,1\}$ collapse intervals. The classification therefore proceeds stratum by stratum:
+\begin{enumerate}
+\item \textbf{Generic strata} (no additional coincidences beyond the diagonal identity): all endpoint patterns whose zero-sets, evaluated at a generic probe, cover $\Lambda^2$ but are not all singletons.
+\item \textbf{Coincidence lines} $p=q$, $p+q=1$, $p=\tfrac12$, $q=\tfrac12$ (the last two make the diagonal lower endpoint double as well): the same enumeration after exact substitution, recomputing zero-sets after substitution.
+\item \textbf{Degenerate edges} $p=0,1$ and $q=0,1$: Fr\'echet intervals collapse; handled by the same enumeration restricted to the surviving parameter.
+\item \textbf{Intersections}: the midpoint $(\tfrac12,\tfrac12)$ and the four corners, solved directly with no support restriction.
+\end{enumerate}
+At every point of $[0,1]^2$ the true zero-sets are contained in the frozen stratum zero-sets of exactly one stratum of this list (generically they coincide; enlarged zero-sets occur exactly on the enumerated lines/edges, and further enlargements exactly at midpoint/corners), so infeasibility of the support-restricted system in every stratum excludes all models outside Case A.
+
+\begin{remark}[Scope of the probe step]\label{rem:probe}
+The frozen zero-sets are determined by exact rational probe samples: the probe is a \emph{classification} step deciding which declared-support stratum a given endpoint pattern belongs to, while the exclusion itself is rigorous for the declared support because every certificate is computed symbolically with the substituted $\pi_x$, never with the probed numbers. Since an endpoint choice forces its zero cell identically, the frozen zero-set always \emph{contains} the generic one; a probe landing on a coincidence locus can only enlarge the frozen support, which weakens (never strengthens) the exclusion --- and exactly those enlargements are where the line/edge strata, with their own recomputed supports, take over. Intersections of coincidence loci (midpoint, corners) are solved directly with no support restriction. The probe grid is fixed in the published code; a verifier may re-derive the stratification by rerunning \texttt{export\_certificates.py}, or verify the published ledger alone, which is the recommended path (Appendix~C).
+\end{remark}
+
+\begin{lemma}[Computational exclusion]
+\label{lem:cert}
+For each of the $844$ excluded strata (generic, lines, edges, midpoint) the support-restricted Born $+$ simplex system, viewed as a polynomial system in the response variables and the surviving parameter(s) over $\mathbb{Q}$, has empty variety: the reduced lexicographic Gr\"obner basis of the ideal generated by the system together with $1-y$ contains the constant $1$ for $y$ eliminated --- equivalently $1$ lies in the ideal of the system, so by Hilbert's Nullstellensatz there is no complex, hence no stochastic, solution. Generator lists for all strata are published (\texttt{CERT\_LEDGER.json}); a standalone verifier recomputes each basis from the generators alone.
+\end{lemma}
+Lemma \ref{lem:cert} is the single computational step of the paper. It is exact (rational arithmetic only), self-contained (the generators are explicit polynomial identities readable from the model), and independently checkable (Appendix~C): no numerical sampling, optimization, or grid enters, and no PASS label of any prior audit is relied upon. The two corner strata are the only ones with nonempty variety, each a single rational solution (Appendix~B).
+
+\section{Proofs of the theorems}
+\begin{proof}[Proof of Theorem \ref{thm:rigid}]
+Let a model be given. Lemma \ref{lem:endpoint} puts every $t_x$ at an endpoint; Lemma \ref{lem:coverage} gives coverage. If all zero-sets are singletons, Proposition \ref{prop:caseA} yields exactly the two deterministic models. Otherwise some $Z_x$ is double and Proposition \ref{prop:double} places the model in a stratum of Section \ref{sec:BC}: all such strata except the corners are empty by Lemma \ref{lem:cert}; the corners $(0,1)$ and $(1,0)$ admit exactly one model each, in which point-mass marginals force $\pi_x=\mathrm{prod}_x$ (Fr\'echet intervals collapse), so $\dd_x=0$ for all $x$ and $\omega=0$. No other models exist.
+\end{proof}
+\begin{proof}[Proof of Theorem \ref{thm:main}]
+By Theorem \ref{thm:rigid} there are four models. For the deterministic pair, Appendix~B verifies $\omega^2=\tfrac14$ and $\tfrac12\sum_x\dd_x=\tfrac14$ exactly: equality. For the corner models both sides are $0$: equality. Hence the inequality holds for all models, with equality exactly at the four listed parameter pairs. (Independently, in the mixed-side region $p\le\tfrac12\le q$ the inequality holds unconditionally for \emph{all} endpoint-stratum systems, feasible or not: each $|t_x|$ is at least the minimal entry of $\mathrm{prod}_x$, so $\sum_x|t_x|\ge 2p(1-q)+p^2+(1-q)^2=(p+1-q)^2=\omega^2$, and $\sum_x|t_x|=\tfrac12\sum_x\dd_x$ by Lemma \ref{lem:reduce}; the case $q\le\tfrac12\le p$ follows by the swap symmetry.)
+\end{proof}
+
+\section{Physical interpretation}
+\label{sec:phys}
+$\omega$ is the maximal success probability of unambiguous state discrimination between $\mu_1,\mu_2$; $\dd_x$ measures how much the joint ontic distribution of preparation pair $x$ deviates from independent sampling --- the ``disturbance from preparation independence.'' Theorem \ref{thm:main} says: in any two-state model of the PBR exclusion data, the square of the epistemic overlap is bounded by half the total coupling deviation. The rigidity theorem sharpens this into a no-go with an escape clause: the only models saturating the budget are the deterministic PBR-type assignments at $(\tfrac14,\tfrac34)$, and the only models paying zero disturbance are the trivial point-mass corners. Stochastic response averaging buys nothing: it does not enlarge the feasible class beyond the deterministic models plus degenerate corners. This is the finite-$\Lambda$ avatar of the preparation-independence conclusions of PBR and its quantitative extensions \cite{pbr,branciard,mansfield,ks2}: at $|\Lambda|=2$ the exclusion structure plus marginal consistency already force determinism, and any residual stochasticity must be charged to coupling deviations at least $2\omega^2$ in aggregate.
+
+\section{Related work and novelty}
+\label{sec:related}
+The exclusion table \eqref{eq:B} is the two-copy BB84 PBR contradiction pattern \cite{pbr}. The closest quantitative relatives are Branciard's overlap-ratio bounds \cite{branciard}, which assume preparation independence and concern Hilbert dimensions $d\ge4$; Kunjwal--Spekkens noncontextuality inequalities \cite{ks2}, which bound response overlaps under preparation/measurement noncontextuality rather than bounding coupling deviations; symmetry-based $\psi$-epistemic no-gos and constructions \cite{aaronson}; Mansfield's $\psi$-ontology theorem under weakened preparation independence allowing classical correlations \cite{mansfield}; and the contextual fraction as a scenario-general contextuality measure \cite{abramsky}. A citation-disciplined audit of these primary sources (all arXiv IDs resolved and title-matched via the arXiv API on 2026-11-07) found no published theorem that, with unrestricted couplings at $|\Lambda|=2$, takes the total-variation distance from the independent product as the disturbance measure and implies the specific inequality $\omega^2\le\tfrac12\sum_x\dd_x$, and no prior exhaustive feasibility classification of this exclusion table at $k=2$. We therefore claim novelty for the combination: (i) the sharp TV-disturbance inequality with unrestricted couplings, (ii) the exact equality characterization at four isolated parameter pairs, and (iii) the complete rigid classification of the feasible class. We claim no novelty for the exclusion scenario itself, which is standard, nor for the general philosophy of quantitative $\psi$-ontology bounds.
+
+\section{Assumptions and limitations}
+\label{sec:limits}
+(i) The result is specific to the table \eqref{eq:B} (zero diagonal, off-diagonal $\tfrac14,\tfrac14,\tfrac12$); other exclusion patterns give different constants. (ii) $|\Lambda|=2$ exactly; no claim for $|\Lambda|>2$, where product-measure-free models exist and the class is larger --- the distinction between $k=2$, stochastic refinements, and unrestricted ontic spaces is maintained throughout. (iii) Marginal consistency is assumed; the theorem constrains couplings, it does not derive marginals. (iv) Lemma \ref{lem:cert} is a computer-assisted step over exact rational arithmetic; its content is checkable in isolation (Appendix~C), and the non-computational skeleton (Lemmas \ref{lem:reduce}--\ref{lem:endpoint}, Propositions \ref{prop:double}--\ref{prop:caseA}) is hand-verifiable. (v) Degenerate marginals are included deliberately; they contribute the two trivial equality cases.
+
+\appendix
+\section{Endpoint cases and double-zero bookkeeping}
+The four endpoint cases of Lemma \ref{lem:endpoint} in table form: zero cell $0$: $t=-\mathrm{prod}_0$, feasible iff $\mathrm{prod}_3\ge\mathrm{prod}_0$; zero cell $3$: $t=-\mathrm{prod}_3$, feasible iff $\mathrm{prod}_0\ge\mathrm{prod}_3$; zero cell $1$: $t=+\mathrm{prod}_1$, feasible iff $\mathrm{prod}_2\ge\mathrm{prod}_1$; zero cell $2$: $t=+\mathrm{prod}_2$, feasible iff $\mathrm{prod}_1\ge\mathrm{prod}_2$. Double zeros: cells $\{0,3\}$ iff $\mathrm{prod}_0=\mathrm{prod}_3$; cells $\{1,2\}$ iff $\mathrm{prod}_1=\mathrm{prod}_2$. For diagonal preparations the latter holds identically; hence in Case A the diagonal preparations must choose a \emph{lower} endpoint (zero cell $0$ or $3$) to keep singletons, which is why only permutations with $c_{x_2},c_{x_3}\in\{0,3\}$ survive --- $4$ of $24$ need be checked by hand, the rest are eliminated by the identity double-zero before any solve. (The published enumeration checks all $24$ without this shortcut.)
+
+\section{Explicit models and the permutation table}
+For the model at $(p,q)=(\tfrac14,\tfrac34)$ with $\sigma=(1,0,3,2)$ (outcome $o$ fires on cell $\sigma(o)$; cells ordered $00,01,10,11$): responses are deterministic, $\xi_o(\sigma(o))=1$, and the couplings are the $B$-table columns permuted by $\sigma^{-1}$:
+\[
+\pi_{x_1}=(\tfrac14,0,\tfrac12,\tfrac14),\quad
+\pi_{x_2}=(0,\tfrac14,\tfrac14,\tfrac12),\quad
+\pi_{x_3}=(\tfrac12,\tfrac14,0,\tfrac14),\quad
+\pi_{x_4}=(\tfrac14,\tfrac12,\tfrac14,0).
+\]
+Marginals: $\pi_{x_1}$ has row sums $(\tfrac14,\tfrac34)=\mu_1$, column sums $(\tfrac34,\tfrac14)=\mu_2$, etc. Endpoint parameters: $t_{x_1}=+\tfrac1{16}$ (double zero at cells $\{1,2\}$ is avoided: here $\pi_{x_1}$ has a single zero at cell $1$ since $\mathrm{prod}_1=\tfrac1{16}\ne\mathrm{prod}_2=\tfrac9{16}$; $t_{x_1}=\mathrm{prod}_1$ is the upper endpoint), $t_{x_2}=-\tfrac1{16}$, $t_{x_3}=-\tfrac1{16}$, $t_{x_4}=+\tfrac1{16}$; all four are minimal-endpoint choices, $\dd_x=2|t_x|=\tfrac18$ each, $\tfrac12\sum_x\dd_x=\tfrac14$, and $\omega=\tfrac12$, $\omega^2=\tfrac14$. Substituting into \eqref{eq:B} verifies all $16$ entries exactly (each row of $B$ is picked out by the deterministic response). The swap model $(p,q)=(\tfrac34,\tfrac14)$, $\sigma=(2,3,0,1)$ is its $\mu_1\leftrightarrow\mu_2$ image. Corner model $(0,1)$: $\mu_1=(0,1)$, $\mu_2=(1,0)$, all $\pi_x$ are the unique point-mass products, and the response table $\xi$ solving \eqref{eq:B} is unique with entries in $\{0,\tfrac14,\tfrac12\}$ (exhibited in the companion ledger); $\omega=0$, $\dd=0$. The Case A permutation table: of $24$ permutations, $4$ (those with $c_{x_2},c_{x_3}\in\{0,3\}$ singletons) yield consistent linear systems; of these, the Gr\"obner/solve step returns solutions only for $\sigma=(1,0,3,2)$ and $\sigma=(2,3,0,1)$ at the stated $(p,q)$; the other two have empty variety (constant in the reduced basis). The full per-permutation machine table is reproducible with the independent code path \texttt{verification/verify\_independent.py} shipped with this paper.
+
+\section{Certificate format and independent verification}
+Each excluded stratum contributes a ledger entry
+\texttt{\{id, kind, pattern, condition, support, vars, generators, gb\_contains\_1\}}:
+\texttt{pattern} is the endpoint choice per preparation; \texttt{condition} the parameter substitution (none for generic); \texttt{support} the frozen zero-sets $Z_x$; \texttt{vars} the response variables $\xi_o|_{Z_x}$; \texttt{generators} the expanded polynomials $\sum_{\lambda\in Z_o}\xi_o\,\pi_x|_\lambda - B[o][x]$ and simplex rows $\sum_o\xi_o-1$ in $\mathbb{Q}[p,q,\xi]$. Verification: for each entry recompute the reduced lexicographic Gr\"obner basis of $\langle \texttt{generators}\rangle+\langle 1-y\rangle$ over $\mathbb{Q}$ with the response variables and $(p,q)$ eliminated before $y$; the basis must contain a nonzero constant. $844$ entries certify; the $2$ corner entries have $1\notin I$ and are verified instead by explicit substitution. Counts: $92$ generic, $736$ line/edge, $14$ midpoint-class, $4$ corners (total ledger $846$, excluded $844$; at the midpoint the two uniform-endpoint combinations fail coverage --- their zero-sets are $\{0,3\}$ and $\{1,2\}$ respectively --- and are dropped, leaving $14$). Command: \texttt{python3 verify\_certificates.py} (sympy $\ge 1.12$, exact rationals, no floats). SHA-256 hashes of all artifacts: \texttt{MANIFEST.sha256}.
+
+\begin{thebibliography}{9}
+\bibitem{harriganspekkens} L.~Harrigan and R.~W.~Spekkens, ``Einstein, incompleteness, and the epistemic view of quantum states,'' Found.\ Phys.\ 40, 125 (2010), arXiv:0706.2661.
+\bibitem{pbr} M.~F.~Pusey, J.~Barrett, T.~Rudolph, ``On the reality of the quantum state,'' Nat.\ Phys.\ 8, 475 (2012), arXiv:1111.3328.
+\bibitem{branciard} C.~Branciard, ``How $\psi$-epistemic models necessarily fail to explain the indistinguishability of quantum states,'' Phys.\ Rev.\ Lett.\ 113, 020409 (2014), arXiv:1407.3005.
+\bibitem{ks2} R.~Kunjwal and R.~W.~Spekkens, ``From the Kochen--Specker theorem to noncontextuality inequalities without assuming determinism,'' Phys.\ Rev.\ Lett.\ 115, 110403 (2015), arXiv:1506.04150.
+\bibitem{aaronson} S.~Aaronson, M.~Bouland, T.~Chua, G.~Lowther, ``$\psi$-Epistemic theories: the role of symmetry,'' Phys.\ Rev.\ A 88, 032111 (2013), arXiv:1303.2834.
+\bibitem{mansfield} S.~Mansfield, ``Reality of the quantum state: towards a stronger $\psi$-ontology theorem,'' Phys.\ Rev.\ A 94, 042124 (2016), arXiv:1412.0669.
+\bibitem{abramsky} S.~Abramsky, D.~Barbosa, N.~Mansfield, ``The contextual fraction as a measure of contextuality,'' Phys.\ Rev.\ Lett.\ 119, 050504 (2017), arXiv:1705.07918.
+\end{thebibliography}
+\end{document}
