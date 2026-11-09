@@ -6,6 +6,7 @@ Fresh sympy code paths, no reuse of QF-02.7 numerical scripts.
 
 import sympy as sp
 import itertools
+import sys
 from fractions import Fraction
 
 # ============================================================
@@ -1111,4 +1112,4 @@ def main():
     return all_pass
 
 if __name__ == "__main__":
-    main()
+    sys.exit(0 if main() else 1)

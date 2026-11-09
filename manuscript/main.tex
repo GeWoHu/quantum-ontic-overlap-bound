@@ -2,6 +2,8 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=2.6cm]{geometry}
 \usepackage{booktabs}
+\usepackage{microtype}
+\setlength{\emergencystretch}{1.5em}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -10,15 +12,15 @@
 \newtheorem{convention}{Convention}
 \newtheorem{remark}{Remark}
 \newcommand{\dd}{\delta}
-\title{\bf Stochastic rigidity of two-ontic-state models of the PBR exclusion scenario, with a sharp overlap--disturbance inequality}
-\author{Preprint v1.0 --- for expert review}
-\date{November 7, 2026}
+\title{\bf Classification of two-ontic-state ontological models for the PBR conclusive-exclusion table, with a sharp overlap--correlation inequality}
+\author{Gerald\thanks{Correspondence: \texttt{gewohu@users.noreply.github.com}.}}
+\date{November 9, 2026}
 \begin{document}
 \maketitle
 \begin{center}\fbox{\textbf{PREPRINT FOR EXPERT REVIEW --- NOT PEER REVIEWED}}\end{center}
 
 \begin{abstract}
-We study stochastic (response-averaged) ontological models with exactly two ontic states reproducing the exclusion structure of the two-preparation Puseck--Barrett--Rudolph (PBR) scenario: four product preparations, a four-outcome exclusion measurement with Born table $B$ having zero diagonal and off-diagonal entries $\{\tfrac14,\tfrac14,\tfrac12\}$ per row, and marginal consistency. Let $\omega$ denote the overlap of the two single-system marginals $\mu_1,\mu_2$, and let $\dd_x$ be the total-variation distance between the joint ontic measure of preparation pair $x$ and the independent product $\mu_i\otimes\mu_j$. We prove the sharp inequality
+We study stochastic (response-averaged) ontological models with exactly two ontic states reproducing the exclusion structure of the two-preparation Pusey--Barrett--Rudolph (PBR) scenario: four product preparations, a four-outcome exclusion measurement with Born table $B$ having zero diagonal and off-diagonal entries $\{\tfrac14,\tfrac14,\tfrac12\}$ per row, and marginal consistency. Let $\omega$ denote the overlap of the two single-system marginals $\mu_1,\mu_2$, and let $\dd_x$ be the total-variation distance between the joint ontic measure of preparation pair $x$ and the independent product $\mu_i\otimes\mu_j$. We prove the sharp inequality
 \[
 \omega^2 \;\le\; \tfrac12\sum_x \dd_x ,
 \]
@@ -28,9 +30,9 @@ and, more strongly, a rigidity theorem: the admissible class consists of exactly
 \section{Introduction and statement of results}
 $\psi$-epistemic models explain quantum state statistics by probability distributions (epistemic states) over an ontic space $\Lambda$, with measurement statistics obtained by averaging response functions over those distributions \cite{harriganspekkens}. The PBR theorem \cite{pbr} forces, under preparation independence, any model reproducing the statistics of certain state sets to be $\psi$-ontic; quantitative extensions bound overlaps and response probabilities \cite{branciard}, noncontextuality inequalities remove the determinism assumption \cite{ks2}, symmetry-based no-go theorems and explicit model constructions delimit the $\psi$-epistemic territory \cite{aaronson}, weakened notions of preparation independence admit classical correlations \cite{mansfield}, and the contextual fraction quantifies contextuality in general empirical models \cite{abramsky}. The present paper fixes $|\Lambda|=2$ and the two-copy BB84 exclusion structure, but drops the product-measure assumption itself: the joint ontic measures $\pi_x$ of preparation pairs are arbitrary couplings of the given marginals, and the theorem quantifies how far from independence they must be.
 
-Write the two single-system marginals as $\mu_1=(p,1-p)$, $\mu_2=(q,1-q)$, $p,q\in[0,1]$. The overlap is $\omega=\sum_{\lambda}\min(\mu_1(\lambda),\mu_2(\lambda)) = \min(p,q)+\min(1-p,1-q)$, and for each of the four preparations $x$ the disturbance-from-independence is $\dd_x=\tfrac12\|\pi_x-\mu_i\otimes\mu_j\|_1$.
+Write the two single-system marginals as $\mu_1=(p,1-p)$, $\mu_2=(q,1-q)$, $p,q\in[0,1]$. The overlap is $\omega=\sum_{\lambda}\min(\mu_1(\lambda),\mu_2(\lambda)) = \min(p,q)+\min(1-p,1-q)$, and for each of the four preparations $x$ the factorization defect from independence is $\dd_x=\tfrac12\|\pi_x-\mu_i\otimes\mu_j\|_1$.
 
-\begin{theorem}[Sharp overlap--disturbance inequality]
+\begin{theorem}[Sharp overlap--correlation inequality]
 \label{thm:main}
 Every stochastic ontological model with $|\Lambda|=2$ that is FULL-BORN-compatible with the exclusion table $B$ \eqref{eq:B} satisfies
 $\omega^2 \le \tfrac12\sum_x \dd_x$,
@@ -80,7 +82,7 @@ Write $\mathrm{prod}_x=\mu_i\otimes\mu_j$ and let $\mathrm{prod}_k$ denote its $
 \begin{lemma}[Coupling parametrization]
 \label{lem:reduce}
 Every coupling $\pi$ of $(\mu_i,\mu_j)$ on $2\times2$ has a unique form $\pi=\mathrm{prod}+t\,J$ with $J=\left(\begin{smallmatrix}1&-1\\-1&1\end{smallmatrix}\right)$ and $t$ in the Fr\'echet interval
-$t\in[\max(-\mathrm{prod}_0,-\mathrm{prod}_3),\,\min(\mathrm{prod}_1,\mathrm{prod}_2)]$; moreover $\dd=\tfrac12\|tJ\|_1=2|t|$.
+\[ t\in[\max(-\mathrm{prod}_0,-\mathrm{prod}_3),\,\min(\mathrm{prod}_1,\mathrm{prod}_2)]; \] moreover $\dd=\tfrac12\|tJ\|_1=2|t|$.
 \end{lemma}
 \begin{proof}
 The marginal constraints are four linear equations in four unknowns of rank $3$; the kernel is spanned by $J$. Nonnegativity of the four entries $\mathrm{prod}_k\pm t$ gives exactly the stated interval. $\tfrac12\|tJ\|_1=\tfrac12(4|t|)=2|t|$.
@@ -104,9 +106,9 @@ For every cell $\lambda\in\Lambda^2$ there is a preparation $x$ with $\pi_x(\lam
 $\sum_o\xi_o(\lambda)=1$ gives an outcome $o$ with $\xi_o(\lambda)>0$; elementwise complementarity (proof of Lemma \ref{lem:endpoint}) forces $\pi_o(\lambda)=0$.
 \end{proof}
 
-\begin{proposition}[Double-zero locus]
+\begin{proposition}[Double-zero locus, nondegenerate marginals]
 \label{prop:double}
-$Z_x$ has size $2$ iff $\mathrm{prod}_0=\mathrm{prod}_3$ (lower double zero) or $\mathrm{prod}_1=\mathrm{prod}_2$ (upper double zero) for $\mathrm{prod}_x$. For the diagonal preparations $(\mu_1,\mu_1)$, $(\mu_2,\mu_2)$ the identity $\mathrm{prod}_1=\mathrm{prod}_2$ holds identically, so their upper endpoint is always a double zero. Off-diagonal preparations double exactly on the lines $p=q$ or $p+q=1$; degenerate marginals $p,q\in\{0,1\}$ collapse Fr\'echet intervals to a point.
+Let $p,q\in(0,1)$. Then $Z_x$ has size $2$ iff $\mathrm{prod}_0=\mathrm{prod}_3$ (lower double zero) or $\mathrm{prod}_1=\mathrm{prod}_2$ (upper double zero) for $\mathrm{prod}_x$. For the diagonal preparations $(\mu_1,\mu_1)$, $(\mu_2,\mu_2)$ the identity $\mathrm{prod}_1=\mathrm{prod}_2$ holds identically, so their upper endpoint is always a double zero. Off-diagonal preparations double exactly on the lines $p=q$ or $p+q=1$. Degenerate marginals $p,q\in\{0,1\}$ are excluded from the statement: there the Fr\'echet interval collapses to $t=0$, the product is itself a point mass, and $Z_x$ can have size $3$; these corner cases are treated directly as separate strata in the certificate ledger \texttt{certificates/CERT\_LEDGER.json}.
 \end{proposition}
 \begin{proof}
 $\pi_1=\pi_2=0$ iff $t=\mathrm{prod}_1=\mathrm{prod}_2$; $\pi_0=\pi_3=0$ iff $-\mathrm{prod}_0=-\mathrm{prod}_3$. For $(\mu_1,\mu_1)$: $\mathrm{prod}_1=\mathrm{prod}_2=p(1-p)$ identically. For $(\mu_1,\mu_2)$: $\mathrm{prod}_0=\mathrm{prod}_3\iff p q=(1-p)(1-q)\iff p+q=1$, and $\mathrm{prod}_1=\mathrm{prod}_2\iff p(1-q)=q(1-p)\iff p=q$.
@@ -162,11 +164,11 @@ By Theorem \ref{thm:rigid} there are four models. For the deterministic pair, Ap
 
 \section{Physical interpretation}
 \label{sec:phys}
-$\omega$ is the maximal success probability of unambiguous state discrimination between $\mu_1,\mu_2$; $\dd_x$ measures how much the joint ontic distribution of preparation pair $x$ deviates from independent sampling --- the ``disturbance from preparation independence.'' Theorem \ref{thm:main} says: in any two-state model of the PBR exclusion data, the square of the epistemic overlap is bounded by half the total coupling deviation. The rigidity theorem sharpens this into a no-go with an escape clause: the only models saturating the budget are the deterministic PBR-type assignments at $(\tfrac14,\tfrac34)$, and the only models paying zero disturbance are the trivial point-mass corners. Stochastic response averaging buys nothing: it does not enlarge the feasible class beyond the deterministic models plus degenerate corners. This is the finite-$\Lambda$ avatar of the preparation-independence conclusions of PBR and its quantitative extensions \cite{pbr,branciard,mansfield,ks2}: at $|\Lambda|=2$ the exclusion structure plus marginal consistency already force determinism, and any residual stochasticity must be charged to coupling deviations at least $2\omega^2$ in aggregate.
+$\omega=1-\mathrm{TV}(\mu_1,\mu_2)$ is the classical overlap statistic; for equal priors it determines \emph{minimum-error} discrimination via $P^{\rm ME}_{\rm err}=\omega/2$. It is \emph{not} an unambiguous-discrimination success probability: at the nontrivial model $(p,q)=(\tfrac14,\tfrac34)$ both marginals have full support, so classical unambiguous discrimination between them succeeds with probability $0$ while $\omega=\tfrac12$. $\dd_x$ measures how much the joint ontic distribution of preparation pair $x$ deviates from independent sampling --- an ontological \emph{factorization defect} (correlation distance), not an operationally accessible dynamical disturbance. Theorem \ref{thm:main} says: in any two-state model of the PBR exclusion data, the square of the epistemic overlap is bounded by half the total coupling deviation. The rigidity theorem sharpens this into a no-go with an escape clause: the only models saturating the budget are the deterministic PBR-type assignments at $(\tfrac14,\tfrac34)$, and the only models with zero factorization defect are the trivial point-mass corners. Stochastic response averaging buys nothing: it does not enlarge the feasible class beyond the deterministic models plus degenerate corners. This is the finite-$\Lambda$ avatar of the preparation-independence conclusions of PBR and its quantitative extensions \cite{pbr,branciard,mansfield,ks2}: at $|\Lambda|=2$ the exclusion structure plus marginal consistency already force determinism, and any residual stochasticity must be charged to coupling deviations at least $2\omega^2$ in aggregate.
 
 \section{Related work and novelty}
 \label{sec:related}
-The exclusion table \eqref{eq:B} is the two-copy BB84 PBR contradiction pattern \cite{pbr}. The closest quantitative relatives are Branciard's overlap-ratio bounds \cite{branciard}, which assume preparation independence and concern Hilbert dimensions $d\ge4$; Kunjwal--Spekkens noncontextuality inequalities \cite{ks2}, which bound response overlaps under preparation/measurement noncontextuality rather than bounding coupling deviations; symmetry-based $\psi$-epistemic no-gos and constructions \cite{aaronson}; Mansfield's $\psi$-ontology theorem under weakened preparation independence allowing classical correlations \cite{mansfield}; and the contextual fraction as a scenario-general contextuality measure \cite{abramsky}. A citation-disciplined audit of these primary sources (all arXiv IDs resolved and title-matched via the arXiv API on 2026-11-07) found no published theorem that, with unrestricted couplings at $|\Lambda|=2$, takes the total-variation distance from the independent product as the disturbance measure and implies the specific inequality $\omega^2\le\tfrac12\sum_x\dd_x$, and no prior exhaustive feasibility classification of this exclusion table at $k=2$. We therefore claim novelty for the combination: (i) the sharp TV-disturbance inequality with unrestricted couplings, (ii) the exact equality characterization at four isolated parameter pairs, and (iii) the complete rigid classification of the feasible class. We claim no novelty for the exclusion scenario itself, which is standard, nor for the general philosophy of quantitative $\psi$-ontology bounds.
+The exclusion table \eqref{eq:B} is the two-copy PBR conclusive-exclusion pattern for the preparations $|0\rangle$ and $|+\rangle$ \cite{pbr}. The closest quantitative relatives are Branciard's overlap-ratio bounds \cite{branciard}, which concern single-system $\psi$-epistemic overlap ratios under measurement noncontextuality (not a compound-preparation independence assumption) and Hilbert dimensions $d\ge4$; Kunjwal--Spekkens noncontextuality inequalities \cite{ks2}, which bound response overlaps under preparation/measurement noncontextuality rather than bounding coupling deviations; symmetry-based $\psi$-epistemic no-gos and constructions \cite{aaronson}; Mansfield's $\psi$-ontology theorem under weakened preparation independence allowing classical correlations \cite{mansfield}; and the contextual fraction as a scenario-general contextuality measure \cite{abramsky}. We stress that our couplings are not fully unrestricted: local marginals are fixed, the composite ontic space is assumed to be exactly $\Lambda^2$, and additional holistic ontic variables are excluded. Mansfield-type relaxations allowing classical correlations between preparation devices \cite{mansfield}, and holistic ontic extensions, evade exactly these assumptions and remain open model classes for this table. A citation-disciplined audit of these primary sources (all arXiv IDs resolved and title-matched via the arXiv API on 2026-11-07) found no published theorem that, with unrestricted couplings at $|\Lambda|=2$, takes the total-variation distance from the independent product as the factorization-defect measure and implies the specific inequality $\omega^2\le\tfrac12\sum_x\dd_x$, and no prior exhaustive feasibility classification of this exclusion table at $k=2$. We therefore claim novelty for the combination: (i) the sharp TV-correlation inequality with unrestricted couplings, (ii) the exact equality characterization at four isolated parameter pairs, and (iii) the complete rigid classification of the feasible class. We claim no novelty for the exclusion scenario itself, which is standard, nor for the general philosophy of quantitative $\psi$-ontology bounds.
 
 \section{Assumptions and limitations}
 \label{sec:limits}
@@ -187,12 +189,38 @@ For the model at $(p,q)=(\tfrac14,\tfrac34)$ with $\sigma=(1,0,3,2)$ (outcome $o
 Marginals: $\pi_{x_1}$ has row sums $(\tfrac14,\tfrac34)=\mu_1$, column sums $(\tfrac34,\tfrac14)=\mu_2$, etc. Endpoint parameters: $t_{x_1}=+\tfrac1{16}$ (double zero at cells $\{1,2\}$ is avoided: here $\pi_{x_1}$ has a single zero at cell $1$ since $\mathrm{prod}_1=\tfrac1{16}\ne\mathrm{prod}_2=\tfrac9{16}$; $t_{x_1}=\mathrm{prod}_1$ is the upper endpoint), $t_{x_2}=-\tfrac1{16}$, $t_{x_3}=-\tfrac1{16}$, $t_{x_4}=+\tfrac1{16}$; all four are minimal-endpoint choices, $\dd_x=2|t_x|=\tfrac18$ each, $\tfrac12\sum_x\dd_x=\tfrac14$, and $\omega=\tfrac12$, $\omega^2=\tfrac14$. Substituting into \eqref{eq:B} verifies all $16$ entries exactly (each row of $B$ is picked out by the deterministic response). The swap model $(p,q)=(\tfrac34,\tfrac14)$, $\sigma=(2,3,0,1)$ is its $\mu_1\leftrightarrow\mu_2$ image. Corner model $(0,1)$: $\mu_1=(0,1)$, $\mu_2=(1,0)$, all $\pi_x$ are the unique point-mass products, and the response table $\xi$ solving \eqref{eq:B} is unique with entries in $\{0,\tfrac14,\tfrac12\}$ (exhibited in the companion ledger); $\omega=0$, $\dd=0$. The Case A permutation table: of $24$ permutations, $4$ (those with $c_{x_2},c_{x_3}\in\{0,3\}$ singletons) yield consistent linear systems; of these, the Gr\"obner/solve step returns solutions only for $\sigma=(1,0,3,2)$ and $\sigma=(2,3,0,1)$ at the stated $(p,q)$; the other two have empty variety (constant in the reduced basis). The full per-permutation machine table is reproducible with the independent code path \texttt{verification/verify\_independent.py} shipped with this paper.
 
 \section{Certificate format and independent verification}
-Each excluded stratum contributes a ledger entry
-\texttt{\{id, kind, pattern, condition, support, vars, generators, gb\_contains\_1\}}:
-\texttt{pattern} is the endpoint choice per preparation; \texttt{condition} the parameter substitution (none for generic); \texttt{support} the frozen zero-sets $Z_x$; \texttt{vars} the response variables $\xi_o|_{Z_x}$; \texttt{generators} the expanded polynomials $\sum_{\lambda\in Z_o}\xi_o\,\pi_x|_\lambda - B[o][x]$ and simplex rows $\sum_o\xi_o-1$ in $\mathbb{Q}[p,q,\xi]$. Verification: for each entry recompute the reduced lexicographic Gr\"obner basis of $\langle \texttt{generators}\rangle+\langle 1-y\rangle$ over $\mathbb{Q}$ with the response variables and $(p,q)$ eliminated before $y$; the basis must contain a nonzero constant. $844$ entries certify; the $2$ corner entries have $1\notin I$ and are verified instead by explicit substitution. Counts: $92$ generic, $736$ line/edge, $14$ midpoint-class, $4$ corners (total ledger $846$, excluded $844$; at the midpoint the two uniform-endpoint combinations fail coverage --- their zero-sets are $\{0,3\}$ and $\{1,2\}$ respectively --- and are dropped, leaving $14$). Command: \texttt{python3 verify\_certificates.py} (sympy $\ge 1.12$, exact rationals, no floats). SHA-256 hashes of all artifacts: \texttt{MANIFEST.sha256}.
+Each surviving stratum contributes a ledger entry
+\[ \texttt{\{id, kind, pattern, condition, support, vars, generators, gb\_contains\_1\}}, \]
+whose fields are the following:
+\texttt{pattern} is the endpoint choice per preparation; \texttt{condition} the cell of the
+endpoint-feasibility arrangement (chamber, open segment, or edge); \texttt{support} the true
+zero-sets $Z_x$ obtained by symbolic substitution --- cells vanishing identically on the cell,
+never read off numerical probes; \texttt{vars} the response variables $\xi_o|_{Z_x}$;
+\texttt{generators} the expanded polynomials $\sum_{\lambda\in Z_o}\xi_o\,\pi_x|_\lambda - B[o][x]$
+and simplex rows $\sum_o\xi_o-1$ in $\mathbb{Q}[p,q,\xi]$. Patterns whose true supports are all
+singletons are Case A (handled analytically in Section~\ref{sec:caseA}); patterns failing coverage
+or endpoint feasibility are excluded by the coverage lemma or infeasible couplings, and patterns
+whose substitution yields identical couplings are deduplicated.
+The verifier does not trust the stored generators: it re-derives supports, generators, and the
+reduced lexicographic Gr\"obner basis of $\langle\texttt{generators}\rangle+\langle 1-y\rangle$
+over $\mathbb{Q}$ from each entry's cell and pattern alone, enforces the exact expected entry
+count and id set (an empty or incomplete ledger fails), and cross-checks every stored field.
+Counts: $8$ chambers (4 contribute $3$ entries each; $4$ are excluded by unreachable cells),
+$8$ open segments ($38$ entries), $2$ edges ($2$ entries; the other two force $t=0$ with empty
+support on diagonal preparations), the midpoint ($14$; the two uniform-endpoint combinations
+fail coverage --- zero-sets $\{0,3\}$ and $\{1,2\}$ --- and are dropped), and $4$ corners:
+total ledger $70$, excluded $68$; the $2$ corner models ($(p,q)=(0,1),(1,0)$) have $1\notin I$
+and are verified by explicit substitution ($\xi\ge0$, $\sum_o\xi_o=1$, Born reproduction).
+Command: \texttt{python3 verify\_certificates.py} (sympy $\ge 1.12$, exact rationals, no floats).
+SHA-256 hashes of all artifacts: \texttt{MANIFEST.sha256}.
+
+\section*{Acknowledgments}
+Computational exploration, certificate engineering, and adversarial proof-checking were
+substantially assisted by an AI research agent. All statements, proofs, and claims in this
+paper are those of the author, who takes full responsibility for them.
 
 \begin{thebibliography}{9}
-\bibitem{harriganspekkens} L.~Harrigan and R.~W.~Spekkens, ``Einstein, incompleteness, and the epistemic view of quantum states,'' Found.\ Phys.\ 40, 125 (2010), arXiv:0706.2661.
+\bibitem{harriganspekkens} M.~Harrigan and R.~W.~Spekkens, ``Einstein, incompleteness, and the epistemic view of quantum states,'' Found.\ Phys.\ 40, 125 (2010), arXiv:0706.2661.
 \bibitem{pbr} M.~F.~Pusey, J.~Barrett, T.~Rudolph, ``On the reality of the quantum state,'' Nat.\ Phys.\ 8, 475 (2012), arXiv:1111.3328.
 \bibitem{branciard} C.~Branciard, ``How $\psi$-epistemic models necessarily fail to explain the indistinguishability of quantum states,'' Phys.\ Rev.\ Lett.\ 113, 020409 (2014), arXiv:1407.3005.
 \bibitem{ks2} R.~Kunjwal and R.~W.~Spekkens, ``From the Kochen--Specker theorem to noncontextuality inequalities without assuming determinism,'' Phys.\ Rev.\ Lett.\ 115, 110403 (2015), arXiv:1506.04150.

@@ -1,4 +1,4 @@
-# Stochastic rigidity of two-ontic-state models of the PBR exclusion scenario
+# Classification of two-ontic-state ontological models for the PBR conclusive-exclusion table
 
 > ## ⚠️ PREPRINT FOR EXPERT REVIEW — NOT PEER REVIEWED
 >
@@ -13,8 +13,9 @@ For ontological models with **exactly two ontic states** (|Λ| = 2) that
 reproduce the exclusion statistics of the two-preparation, two-copy BB84
 PBR scenario — four product preparations, a four-outcome measurement with
 Born table `B` having zero diagonal and off-diagonal entries {1/4, 1/4, 1/2}
-per row — with **arbitrary** joint ontic couplings of the given marginals
-(no preparation-independence assumption), the epistemic overlap ω of the two
+per row — with joint ontic couplings of the given marginals
+(no preparation-independence assumption; couplings otherwise unrestricted within the
+composite ontic space Λ² — local marginals fixed, no extra holistic ontic variables), the epistemic overlap ω of the two
 marginals and the total-variation distances δ_x of the couplings from the
 independent products satisfy the sharp inequality
 
@@ -44,7 +45,7 @@ nondegenerate marginals survives.
   general, or quantum theory's completeness.
 - The exclusion scenario (two-copy BB84 PBR table) is standard, not new.
 - No novelty claim for quantitative ψ-ontology bounds as a genre; the
-  novelty claim is the specific sharp TV-disturbance inequality with exact
+  novelty claim is the specific sharp TV-correlation inequality with exact
   equality characterization plus the complete four-model rigidity
   classification at k = 2 (see Section 7 of the manuscript).
 
@@ -54,10 +55,10 @@ nondegenerate marginals survives.
 |---|---|
 | `manuscript/main.pdf` | The paper (with proof appendices A–C) |
 | `manuscript/main.tex` | LaTeX source (compiles with `tectonic` or pdflatex) |
-| `certificates/CERT_LEDGER.json` | All 846 strata with exact polynomial generators |
-| `certificates/verify_certificates.py` | Standalone certificate verifier (recomputes everything) |
+| `certificates/CERT_LEDGER.json` | All 70 surviving strata of the R2 true-support arrangement, with exact polynomial generators |
+| `certificates/verify_certificates.py` | Standalone RECONSTRUCTING verifier: re-derives supports, generators, and Groebner bases from each entry's cell+pattern; enforces exact counts; verifies the two corner models by explicit substitution |
 | `certificates/export_certificates.py` | Certificate generator (regenerates the ledger) |
-| `verification/verify_independent.py` | Independent reconstruction code path (Case A, equality cases, spot-certificates, break search) |
+| `verification/verify_independent.py` | Cross-check reconstruction path (Case A, equality cases, spot-certificates, break search; a distinct algorithmic route with shared author lineage, not a clean-room implementation) |
 | `REPRODUCE.md` | Exact reproduction instructions and expected outputs |
 | `REVIEW_REQUEST.md` | What we ask experts to attack |
 | `MANIFEST.sha256` | SHA-256 of every published file |
@@ -66,13 +67,26 @@ nondegenerate marginals survives.
 
 ```bash
 python3 certificates/verify_certificates.py
-# expected: VERIFY DONE: 844 certificates reproduced, 0 mismatches,
-#           2 feasible strata skipped (verified by explicit model)
+# expected: VERIFY DONE: 70 entries reconstructed-and-confirmed, 0 mismatches,
+#           2 corner models verified by explicit substitution (70 ledger entries)
 ```
 
-Exact rational arithmetic only (sympy ≥ 1.12); no floats, no sampling, no
-trust in any log file. See `REPRODUCE.md` for the full protocol including
+Exact rational arithmetic only (sympy ≥ 1.12); no floats, no sampling.
+What remains trusted: the model axioms (endpoint couplings, marginal consistency,
+Born table) and the verifier source itself. Tampered ledgers (empty, truncated,
+shrunk supports, replaced generators) are detected and exit non-zero. See `REPRODUCE.md` for the full protocol including
 PDF rebuild and hash checking.
+
+## R2 revision note (2026-11-09)
+
+External review found the R1 ledger's supports were probed numerically before
+substitution, so many line/edge certificates described smaller support systems
+than the true strata (the theorem survived corrected exhaustive checks, but the
+published certificate construction was invalid). R2 regenerates the ledger from
+symbolic substituted zero sets over the full endpoint-feasibility arrangement,
+makes the verifier reconstruct rather than trust, enforces expected counts, and
+exits non-zero on any failure. The superseded R1 ledger is retained as
+`certificates/CERT_LEDGER_R1.json.bak` for audit.
 
 ## License
 
@@ -81,7 +95,8 @@ for scholarly reuse with attribution to the repository author.
 
 ## Citation
 
-Geri (GERIWH), "Stochastic rigidity of two-ontic-state models of the PBR
-exclusion scenario, with a sharp overlap–disturbance inequality," preprint
-v1.0, 2026, this repository. Bibliography therein is arXiv-API-verified
+Gerald, "Classification of two-ontic-state ontological models for the PBR
+conclusive-exclusion table, with a sharp overlap–correlation inequality,"
+preprint v1.1 (R2), 2026, this repository. Substantial AI assistance in
+computation and proof-checking; the author is responsible for all claims. Bibliography therein is arXiv-API-verified
 (all IDs title-matched).
